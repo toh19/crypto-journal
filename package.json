@@ -1,0 +1,25 @@
+{
+  "name": "crypto-journal",
+  "version": "1.0.0",
+  "description": "A comprehensive cryptocurrency tracker web app, providing real-time price updates, historical data, and market insights.",
+  "main": "./src/server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

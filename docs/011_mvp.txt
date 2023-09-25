@@ -1,0 +1,24 @@
+MVP Features
+
+  1. Dashboard
+    - Current Prices: Display the current prices of top cryptocurrencies.
+    - Price Change: Show price change (percentage) over the last 24 hours.
+    - Trending Cryptos: Highlight cryptocurrencies that are trending based on volume or significant price changes.
+    - Quick Links: Provide easy access to detailed pages of top cryptocurrencies.
+
+  2. Cryptocurrency Details
+    - Overview: Display essential details like current price, market cap, volume, and circulating supply.
+    - Historical Price Chart: Show a chart of price trends over different time frames (e.g., 1 day, 1 week, 1 month).
+    - Description: A brief description or overview of the cryptocurrency, its purpose, and its technology.
+    - Links: Provide links to the cryptocurrency's official website, whitepaper, and other relevant resources.
+
+  3. User Authentication
+    - Registration: Allow new users to sign up using their email and password.
+    - Login: Secure login system for returning users.
+    - Password Recovery: Feature to reset the password in case a user forgets it.
+    - Profile Management: Allow users to view and update their profile details.
+
+  4. Responsive Design
+    - Mobile-Friendly: Ensure the app's layout and design adapt well to various screen sizes, especially mobile devices.
+    - Navigation: Intuitive navigation for users to easily access different sections of the app.
+    - Optimized Performance: Ensure fast loading times and smooth interactions on both desktop and mobile devices.
