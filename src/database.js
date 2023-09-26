@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
 
-const { db: dbconfig } = require('./config/config');
+const { db: dbconfig } = require('./configs/config');
 const logger = require('./utils/logger');
 
 const pool = new Pool(dbconfig);

@@ -6,4 +6,8 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
   },
+  jwt: {
+    secret: process.env.JWT_SECRET,
+    expiration: process.env.JWT_EXPIRATION,
+  },
 };

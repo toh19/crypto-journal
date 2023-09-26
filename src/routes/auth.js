@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 
 const userModel = require('../models/userModel');
 const logger = require('../utils/logger');
+const { generateToken } = require('../utils/jwtHelper');
+const authenticate = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
@@ -85,7 +87,9 @@ router.post('/register', async (req, res) => {
       role,
     };
     const registeredUser = await userModel.registerUser(user);
-    logger.info(`User registered successfully. UserID: ${registeredUser.user_id}`);
+    logger.info(
+      `User registered successfully. UserID: ${registeredUser.user_id}`
+    );
 
     // Send back the registered user details (excluding the password)
     delete registeredUser.password;
@@ -99,6 +103,12 @@ router.post('/register', async (req, res) => {
 router.post('/login', (req, res) => {
   logger.info('Login request received.');
   // Handle login
+  const token = generateToken({ userId: user.user_id });
+  res.json({ token });
+});
+
+router.get('/protected', authenticate, (req, res) => {
+  res.send('Hello Protected World!');
 });
 
 router.post('/logout', (req, res) => {
