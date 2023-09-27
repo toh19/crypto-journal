@@ -1,13 +1,15 @@
 const { db } = require('../database');
 
 const getUserByUsername = async (username) => {
-  const query = 'SELECT * FROM users WHERE username = $1';
+  const query =
+    'SELECT user_id, username, email, password, first_name, last_name FROM users WHERE username = $1';
   const result = await db.query(query, [username]);
   return result.rows[0];
 };
 
 const getUserByEmail = async (email) => {
-  const query = 'SELECT * FROM users WHERE email = $1';
+  const query =
+    'SELECT user_id, username, email, first_name, last_name FROM users WHERE email = $1';
   const result = await db.query(query, [email]);
   return result.rows[0];
 };
@@ -32,8 +34,7 @@ const registerUser = async (user) => {
     dynamicValues.push(user.last_name);
   }
 
-  const returning =
-    'user_id, username, email, first_name, last_name;';
+  const returning = 'user_id, username, email, first_name, last_name;';
 
   const query =
     baseQuery +
