@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const userModel = require('../models/userModel');
 const logger = require('../utils/logger');
-const { generateToken } = require('../utils/jwtHelper');
+const { signToken } = require('../utils/jwtHelper');
 const authenticate = require('../middlewares/authMiddleware');
 
 const router = express.Router();
@@ -84,16 +84,24 @@ router.post('/register', async (req, res) => {
       password: hashedPassword,
       first_name,
       last_name,
-      role,
     };
     const registeredUser = await userModel.registerUser(user);
     logger.info(
       `User registered successfully. UserID: ${registeredUser.user_id}`
     );
 
-    // Send back the registered user details (excluding the password)
-    delete registeredUser.password;
-    res.status(201).json(registeredUser);
+    // Prepare the token payload
+    const tokenPayload = {
+      userId: registeredUser.user_id,
+      username: registeredUser.username,
+      email: registeredUser.email,
+      first_name: registeredUser.first_name,
+      last_name: registeredUser.last_name,
+    }
+    // Generate a token
+    const token = signToken(tokenPayload);
+
+    res.status(201).json({ ...registeredUser, token });
   } catch (err) {
     logger.error(`Error registering the user: ${err.message}`);
     res.status(500).json({ message: 'Server error. Please try again later.' });
@@ -103,17 +111,22 @@ router.post('/register', async (req, res) => {
 router.post('/login', (req, res) => {
   logger.info('Login request received.');
   // Handle login
-  const token = generateToken({ userId: user.user_id });
-  res.json({ token });
+
+  // Generate a token
+  const token = signToken({ userId: registeredUser.user_id });
+  res.status(200).json({ ...loggedInUser, token });
 });
 
 router.get('/protected', authenticate, (req, res) => {
-  res.send('Hello Protected World!');
+  console.log(req.userData)
+  res.json({message: 'Hello Protected World!'});
 });
 
 router.post('/logout', (req, res) => {
   logger.info('Logout request received.');
   // Handle logout
+
+  res.status(200).json({ message: 'Logged out successfully' });
 });
 
 module.exports = router;

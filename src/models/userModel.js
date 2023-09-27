@@ -32,14 +32,8 @@ const registerUser = async (user) => {
     dynamicValues.push(user.last_name);
   }
 
-  if (user.role) {
-    dynamicFields += ', role';
-    valuePlaceholders += `, $${index++}`;
-    dynamicValues.push(user.role);
-  }
-
   const returning =
-    'user_id, username, email, first_name, last_name, role, created_at, updated_at;';
+    'user_id, username, email, first_name, last_name;';
 
   const query =
     baseQuery +
