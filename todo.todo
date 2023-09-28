@@ -19,6 +19,19 @@ Your auth.js route file looks well-structured and covers the basic authenticatio
 - Additional Security: Consider using packages like helmet to add some security headers to your Express app.
 - Testing: Ensure that you have tests (unit and integration) for your authentication routes. This helps catch regressions and ensures that the system works as expected.
 
+/crypto
+- Fetching Current Crypto Prices: Retrieve the latest prices for specific cryptocurrencies.
+- Historical Data: Get historical price data for a particular cryptocurrency.
+- Crypto News: Fetch the latest news related to cryptocurrencies.
+- Crypto Conversion: Convert one cryptocurrency to another based on the current rate.
+- Crypto Wallet: Functionality to create and manage a virtual crypto wallet.
+- Transactions: Record and manage cryptocurrency transactions.
+
+API for crypto prices/historical data
+- coinranking api
+- https://developers.cryptocompare.com/pricing/
+- https://www.coingecko.com/en/api/pricing
+
 
 
 

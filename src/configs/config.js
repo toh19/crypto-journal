@@ -10,4 +10,8 @@ module.exports = {
     secret: process.env.JWT_SECRET,
     expiration: process.env.JWT_EXPIRATION,
   },
+  crypto: {
+    apiURL: process.env.CRYPTO_API_URL,
+    apiKey: process.env.CRYPTO_API_KEY,
+  },
 };
