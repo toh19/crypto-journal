@@ -15,8 +15,19 @@ const getList = async () => {
     const response = await axios.get(`${crypto.apiURL}/coins`, options);
     return response.data.data.coins;
   } catch (error) {
-    logger.error(`Error in getList: ${error}`);
-    throw error;
+    if (error.response) {
+      // The request was made, and the server responded with a status code outside of the 2xx range
+      logger.error(`API Error: ${error.response.data}`);
+      throw new Error(error.response.data.message || 'API Error');
+    } else if (error.request) {
+      // The request was made, but no response was received
+      logger.error(`No response from API: ${error.request}`);
+      throw new Error('No response from API');
+    } else {
+      // Something else happened while setting up the requst
+      logger.error(`Request setup error: ${error.message}`);
+      throw new Error('Request setup error');
+    }
   }
 };
 
