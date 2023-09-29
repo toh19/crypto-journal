@@ -1,18 +1,26 @@
 const express = require('express');
+const NodeCaceh = require('node-cache');
 
 const { getList, getCoinDetails } = require('../apis/cryptoApi');
 const logger = require('../utils/logger');
 
 const router = express.Router();
+const myCache = new NodeCaceh({ stdTTL: 60 * 60 * 24 });
 
 router.get('/all', async (req, res) => {
-  // Handle getting all cryptocurrencies
+  // Check if we have a cached list  
+  const cacheKey = 'cryptoList';
+  const cachedList = myCache.get(cacheKey);
+  if(cachedList) {
+    return res.json(cachedList);
+  } 
   try {
     const list = await getList();
+    myCache.set(cacheKey, list); // Store data in cache
     res.json(list);
   } catch (error) {
     logger.error('Error in /all route:', error); // Logging the actual error
-    res.status(500).json({ message: 'Failed to fetch cryptocurrencies' });
+    res.status(500).json({ message: error.message });
   }
 });
 
