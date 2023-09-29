@@ -1,7 +1,7 @@
 const express = require('express');
 const NodeCaceh = require('node-cache');
 
-const { getList, getCoinDetails } = require('../apis/cryptoApi');
+const { getCoinsList, getCoinDetails } = require('../apis/cryptoApi');
 const logger = require('../utils/logger');
 
 const router = express.Router();
@@ -15,7 +15,7 @@ router.get('/all', async (req, res) => {
     return res.json(cachedList);
   } 
   try {
-    const list = await getList();
+    const list = await getCoinsList();
     myCache.set(cacheKey, list); // Store data in cache
     res.json(list);
   } catch (error) {

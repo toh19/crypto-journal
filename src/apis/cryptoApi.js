@@ -9,11 +9,10 @@ const options = {
   },
 };
 
-// https://developers.coinranking.com/api/documentation/coins#get-list-of-coins
-const getList = async () => {
+const makeApiCall = async (endpoint) => {
   try {
-    const response = await axios.get(`${crypto.apiURL}/coins`, options);
-    return response.data.data.coins;
+    const response = await axios.get(`${endpoint}`, options);
+    return response.data.data;
   } catch (error) {
     if (error.response) {
       // The request was made, and the server responded with a status code outside of the 2xx range
@@ -31,15 +30,16 @@ const getList = async () => {
   }
 };
 
-// https://developers.coinranking.com/api/documentation/coins#get-coin-details
-const getCoinDetails = async (uuid) => {
-  try {
-    const response = await axios.get(`${crypto.apiURL}/coin/${uuid}`, options);
-    return response.data.data.coin;
-  } catch (error) {
-    logger.error(`Error in getCoinDetails: ${error}`);
-    throw error;
-  }
+// https://developers.coinranking.com/api/documentation/coins#get-list-of-coins
+const getCoinsList = async () => {
+  const data = await makeApiCall(`${crypto.apiURL}/coins`);
+  return data.coins;
 };
 
-module.exports = { getList, getCoinDetails };
+// https://developers.coinranking.com/api/documentation/coins#get-coin-details
+const getCoinDetails = async (uuid) => {
+  const data = await makeApiCall(`${crypto.apiURL}/coin/${uuid}`);
+  return data.coin
+};
+
+module.exports = { getCoinsList, getCoinDetails };
