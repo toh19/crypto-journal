@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "A comprehensive cryptocurrency tracker web app, providing real-time price updates, historical data, and market insights.",
   "main": "./src/server.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
     "start": "nodemon src/server.js"
   },
