@@ -5,7 +5,10 @@
   "main": "./index.js",
   "scripts": {
     "start": "react-scripts start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ignore-path .gitignore --ext .js src/",
+    "lint:fix": "npm run lint -- --fix ;git add $(git diff --name-only)",
+    "format": "prettier --write src/**/*.{js}"
   },
   "keywords": [],
   "author": "",
