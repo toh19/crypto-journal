@@ -1,27 +1,33 @@
 {
   "name": "frontend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "./index.js",
+  "version": "0.0.1",
+  "description": "Crytpo Journal Frontend",
   "scripts": {
-    "start": "react-scripts start",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ignore-path .gitignore --ext .js src/",
-    "lint:fix": "npm run lint -- --fix ;git add $(git diff --name-only)",
-    "format": "prettier --write src/**/*.{js}"
+    "build": "next build",
+    "start": "next dev",
+    "lint": "next lint",
+    "fix": "next lint --fix",
+    "test": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-scripts": "^5.0.0"
+    "@types/node": "^20.4.4",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "bootstrap": "^5.3.0",
+    "next": "^13.4.12",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.8.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.1.6"
   },
   "devDependencies": {
     "eslint": "^8.51.0",
+    "eslint-config-next": "^13.4.12",
     "eslint-config-prettier": "^9.0.0",
-    "prettier": "^3.0.3"
+    "sass": "^1.64.1"
   },
   "browserslist": {
     "production": [
