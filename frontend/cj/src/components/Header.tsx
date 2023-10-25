@@ -6,14 +6,7 @@ const Header: React.FC = () => {
   return (
     <header className="d-flex justify-content-between align-items-md-center pb-3 mb-5 border-bottom">
       <Link href="/" className="d-flex align-items-center text-dark text-decoration-none">
-        <Image
-          src={logo}
-          alt="Picture of the author"
-          // width={100} // automatically provided
-          // height={100} // automatically provided
-          // blurDataURL="data:..." //automatically provided
-          // placeholder="blur" // Optional blur-up while loading
-        />
+        <Image src={logo} alt="Picture of the author" />
       </Link>
       <ul className="nav nav-pills">
         <li className="nav-item">

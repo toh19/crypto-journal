@@ -21,8 +21,6 @@ export default function Home() {
         <h2>And my name is Tarek Oueld Hammoud & I will learn everything and will be a billionaire $B</h2>
 
         <BodyComponents />      
-        <hr className="col-1 my-5 mx-0" />
-
         <Footer />
       </Container>
     </>
